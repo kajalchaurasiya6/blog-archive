@@ -1,0 +1,42 @@
+Blog Website: Low Level Design
+
+- Database Design
+    RDBMS - MySQL
+    Database: 'blogsite'
+    1. Table: 'users'
+        user_id INT PK
+        user_name VARCHAR
+        user_pp TEXT
+        user_email VARCHAR UNIQUE DAP (Direct Access Point)
+        password TEXT DAP
+        created_at TIMESTAMP
+    
+    2. Table: 'posts'
+        post_id INT PK
+        post_img TEXT
+        post_title VARCHAR
+        post_desc TEXT
+        created_by (user_id) FK
+        likes INT DEF 0
+        comments INT DEF 0
+        status VARCHAR DEF 'D' (VALUES 'A'|'D'|'AR')
+        created_at TIMESTAMP
+    
+    3. Table: 'comments'
+        com_id INT PK
+        com_on INT FK (post_id)
+        com_by INT FK (user_id)
+        com_desc TEXT
+        created_at TIMESTAMP
+- Usecase
+    User should be able to
+    1. register / login
+    2. view all posts
+    3. create new post
+    4. edit self's post
+    5. delete self's post
+    7. delte account
+
+----- NOTES -----
+IF we do not provide file name at localhost address it will try to find and access 
+index.php at current directory!
